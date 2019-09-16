@@ -1,0 +1,73 @@
+.gameMenu {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 130px;
+}
+
+.standard,
+.active,
+.button,
+.input {
+    border: none;
+    outline: 0;
+    height: 48px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.standard {
+    background-color: #cfd8dc;
+    color: #7e8f95;
+    width: 200px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #7b8d93;
+    color: #fff;
+    width: 200px;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #7b8d93;
+    color: #fff;
+    width: 125px;
+    cursor: pointer;
+}
+
+.input {
+    background-color: #f3f3f3;
+    color: #7e8f95;
+    width: 180px;
+    padding: 0 10px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown_list {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    background-color: #cfd8dc;
+    color: #7e8f95;
+}
+
+.mode,
+.activeMode {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.mode:hover {
+    background-color: #7b8d93;
+    color: #fff;
+}
+
+.activeMode {
+    background-color: #7b8d93;
+    color: #fff;
+}
