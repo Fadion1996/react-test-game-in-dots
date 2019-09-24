@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import css from './gameMenu.module.css';
 
-const GameMenu = () => {
+const GameMenu = ({
+    players,
+    setPlayers,
+    gameModes,
+    setGameModes,
+    mode,
+    setMode,
+    setActivePlayer,
+    scoreComputer,
+    scoreUser,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState('');
-    const [mode, setMode] = useState('Pick game mode');
-    const [gameModes, setGameModes] = useState([]);
 
     useEffect(() => {
         fetch(`http://starnavi-frontend-test-task.herokuapp.com/game-settings`)
@@ -16,6 +25,45 @@ const GameMenu = () => {
                 setGameModes(result);
             });
     }, []);
+
+    const formatDate = date => {
+        const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+
+        const day = date.getDate();
+        const monthIndex = date.getMonth();
+        const year = date.getFullYear();
+        // TODO: change minutes and hours to the score!
+        return `${scoreUser}:${scoreComputer}; ${day} ${monthNames[monthIndex]} ${year}`;
+    };
+
+    const handleSubmit = e => {
+        if (!name) {
+            toast.info('Enter Name');
+        } else if (mode === 'Pick game mode') {
+            toast.info('Choose game mode');
+        } else {
+            toast.success('If Player win send to Dashboard', players);
+            // setPlayers(...players, avtivePlayer);
+            setActivePlayer({
+                id: Math.random(),
+                winner: name,
+                date: formatDate(new Date()),
+            });
+        }
+    };
 
     return (
         <div className={css.gameMenu}>
@@ -53,7 +101,7 @@ const GameMenu = () => {
                 onChange={e => setName(e.target.value)}
                 value={name}
             />
-            <button className={css.button} type="submit">
+            <button className={css.button} type="submit" onClick={handleSubmit}>
                 Play
             </button>
         </div>

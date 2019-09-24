@@ -2,16 +2,22 @@ import React from 'react';
 
 import css from './board.module.css';
 
-const Board = () => (
-    <div className={css.board}>
-        <p className={css.title}>Leader Board</p>
-        <ul className={css.list}>
-            <li className={css.item}>
-                <span className={css.name}>User name</span>
-                <span className={css.score}>Date and Time</span>
-            </li>
-        </ul>
-    </div>
-);
+const Board = ({ players }) => {
+    return (
+        <div className={css.board}>
+            <p className={css.title}>Leader Board</p>
+            <ul className={css.list}>
+                {players.map((player, i) => {
+                    return (
+                        <li className={css.item} key={i}>
+                            <span className={css.name}>{player.winner}</span>
+                            <span className={css.score}>{player.date}</span>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+};
 
 export default Board;
