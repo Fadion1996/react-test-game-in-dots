@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f6cba368f82da09b6e46dae2b433d3bf",
+    "revision": "eef572264293247f311700bb7903a5b0",
     "url": "/react-test-game-in-dots/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-test-game-in-dots/static/css/2.39017165.chunk.css"
   },
   {
-    "revision": "e1befbff572a3db33f10",
+    "revision": "3b85c31d4675a8376e2a",
     "url": "/react-test-game-in-dots/static/css/main.ccf567ba.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-test-game-in-dots/static/js/2.55782e13.chunk.js"
   },
   {
-    "revision": "e1befbff572a3db33f10",
-    "url": "/react-test-game-in-dots/static/js/main.37d25787.chunk.js"
+    "revision": "3b85c31d4675a8376e2a",
+    "url": "/react-test-game-in-dots/static/js/main.1f9be31b.chunk.js"
   },
   {
     "revision": "542c1110ecd012ba89b1",
