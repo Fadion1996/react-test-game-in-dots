@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import css from './gameContent.module.css';
 import GamePlay from './GamePlay/GamePlay';
 
+let play;
+
 const GameContent = ({
     gameModes,
     mode,
@@ -11,6 +13,7 @@ const GameContent = ({
     setScoreUser,
     scoreComputer,
     setScoreComputer,
+    setPlayText,
 }) => {
     const [tiles, setTiles] = useState([]);
     const [size, setSize] = useState('230px');
@@ -51,12 +54,19 @@ const GameContent = ({
         if (activePlayer.winner !== 'Message here') {
             const { delay, field } = gameModes[mode];
             setDisabled(false);
+            clearInterval(play);
 
-            setInterval(() => {
-                setActiveTile(Math.round(Math.random() * field * field));
-                setClicked(true);
-            }, delay);
-            console.log('Begin Game!', delay);
+            if (!stop) {
+                play = setInterval(() => {
+                    setActiveTile(Math.round(Math.random() * field * field));
+                    setClicked(true);
+                }, delay);
+                console.log('Begin Game!', delay);
+            } else {
+                console.log('Stop Game!');
+                clearInterval(play);
+                setDisabled(true);
+            }
         }
     }, [activePlayer, stop]);
 
@@ -70,9 +80,9 @@ const GameContent = ({
 
     useEffect(() => {
         if (prevTile) {
-            if (activeTile > 10) {
+            if (scoreComputer >= 10 || scoreUser >= 10) {
                 setStop(true);
-                setDisabled(true);
+                setPlayText('Play again');
             } else if (clicked !== prevTile.activeTile) {
                 setScoreComputer(scoreComputer + 1);
             }
@@ -92,6 +102,15 @@ const GameContent = ({
 
     return (
         <div className={css.content}>
+            <p className={css.text}>
+                {activePlayer.winner !== 'Message here'
+                    ? scoreComputer >= 10
+                        ? `${activePlayer.winner} loser / computer winner`
+                        : ''
+                    : scoreUser >= 10
+                    ? `${activePlayer.winner} winner / computer loser`
+                    : ''}
+            </p>
             <p className={css.text}>{`${scoreUser} : ${scoreComputer}`}</p>
             <div className="gameContent" style={gameContent}>
                 {tiles.map((item, index) => (

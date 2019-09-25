@@ -7,6 +7,7 @@ import css from './game.module.css';
 const Game = ({ players, setPlayers, score }) => {
     const [gameModes, setGameModes] = useState([]);
     const [mode, setMode] = useState('Pick game mode');
+    const [playText, setPlayText] = useState('Play');
     const [activePlayer, setActivePlayer] = useState({
         winner: 'Message here',
     });
@@ -22,6 +23,7 @@ const Game = ({ players, setPlayers, score }) => {
                 setGameModes={setGameModes}
                 mode={mode}
                 score={score}
+                playText={playText}
                 setMode={setMode}
                 setActivePlayer={setActivePlayer}
                 scoreUser={scoreUser}
@@ -35,6 +37,7 @@ const Game = ({ players, setPlayers, score }) => {
                 scoreComputer={scoreComputer}
                 setScoreUser={setScoreUser}
                 setScoreComputer={setScoreComputer}
+                setPlayText={setPlayText}
             />
         </div>
     );

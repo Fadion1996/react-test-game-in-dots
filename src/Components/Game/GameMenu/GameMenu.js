@@ -6,6 +6,7 @@ import css from './gameMenu.module.css';
 const GameMenu = ({
     players,
     setPlayers,
+    playText,
     gameModes,
     setGameModes,
     mode,
@@ -102,7 +103,7 @@ const GameMenu = ({
                 value={name}
             />
             <button className={css.button} type="submit" onClick={handleSubmit}>
-                Play
+                {playText}
             </button>
         </div>
     );
